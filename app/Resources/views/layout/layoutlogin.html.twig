@@ -69,4 +69,24 @@
         <!--Theme JS-->
         <script src="{{ asset('js/theme.js') }}"></script>
 
+
+    <script>
+
+        $('#input_user').on('keyup', function(e) {
+            if($('#input_user').val() == ''){
+$('#affiche_user').html("www.perspective.dridilotfi.com/<b style='color:red;font-size:10px;'>(Your Username)</b>");
+            }else{
+                $('#affiche_user').html("www.perspective.dridilotfi.com/<b style='color:red;font-size:12px;'>"+ $(this).val()+"</b>");
+            }
+
+        });
+
+        $(function(){
+            $('#affiche_user').html("www.perspective.dridilotfi.com/<b style='color:red;font-size:12px;'>"+ $('#input_user').val()+"</b>");
+        });
+    </script>
+
+
+
+
 </html>
