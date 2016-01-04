@@ -1,0 +1,359 @@
+{% extends 'layout/layout.html.twig' %}
+{% block body %}
+<section class="row page_cover">
+    <div class="container">
+        <div class="row m0">
+            <h1>Masum Rana</h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Author's Page</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="row">
+    <ul class="nav nav-justified ribbon">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</section> <!--Ribbon-->
+
+<section class="row post_page_sidebar post_page_sidebar1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 post_page_uploads">
+                {% for profile in profiles %}
+                <div class="author_details row m0">
+                    <div class="author_cover row m0">
+                        <img src="{{ asset('images/author/cover.jpg') }}" alt="">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 author_photo_name">
+                            <img src="{{ asset('images/author/profile.jpg') }}" alt="" class="img-thumbnail img-circle">
+                            <h3>{{ profile.username}}</h3>
+                        </div>
+                        <div class="col-sm-6 follow_n_count">
+                            <div class="btn-group">
+                                {% if nb|length != 0 %}
+                                <a href="#" class="btn follower_count">{{ nb }}</a>
+                                <a href="{{ path('follow',{ 'id' : profile.id }) }}" class="btn follow">follow</a>
+                                {% else %}
+                                <a class="btn follower_count">{{ nb }}</a>
+                                <a class="btn follow" style="background: red" disabled="disabled">followed</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media bio_section">
+                        <div class="media-left about_social">
+                            <div class="row m0 about_section section_row">
+                                <h4>About Me</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>Full Name:</dt>
+                                    <dd>{{ profile.nomUser }} {{ profile.prenomUser }}</dd>
+
+                                    <dt>Location:</dt>
+                                    <dd>{{ profile.villeUser }}, {{ profile.etatUser }}</dd>
+
+                                    <dt>Join Date:</dt>
+                                    <dd>{{ profile.dateAjoutUser|date("d M, Y", "Europe/Paris") }}</dd>
+
+                                    <dt>Total Videos:</dt>
+                                    <dd>309</dd>
+
+                                    <dt>Total Vies:</dt>
+                                    <dd>5,34,949</dd>
+                                </dl>
+                            </div>
+                            <div class="row m0 social_section section_row">
+                                <h5>Social Accounts</h5>
+                                <ul class="list-inline">
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/1.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/2.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/3.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/4.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/5.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/6.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/7.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/8.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/9.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/10.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/11.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('images/icons/social/12.jpg') }}" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media-body author_desc_by_author">
+                            <p>
+                                {{ profile.descriptionUser }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row title_row">
+                    <h3>videos by {{ profile.nomUser }} {{ profile.prenomUser }}</h3>
+                </div>
+                {% endfor %}
+                <div class="row">
+                    {% if publications|length == 0 %}
+                    <div class="col-sm-12">
+                        <div class="alert alert-info">
+                            Aucune publication !
+                        </div>
+                    </div>
+                    {% else %}
+                    {% for publication in publications %}
+                    <article class="col-sm-4 video_post">
+                        <div class="inner row m0">
+                            <div class="row screencast m0">
+                                <img src="{{ asset('images/media/1.jpg') }}" alt="" class="cast img-responsive">
+                            </div>
+                            <div class="row m0 post_data">
+                                <div class="row m0">
+                                    <a href="single-video.html" class="post_title">
+                                        {{ publication.titlePublication }}
+                                    </a>
+                                </div>
+                                <div class="row m0">
+                                    <div class="fleft author">by
+                                        <a href="page-author.html">
+                                            {{ publication.user.username }}
+                                        </a>
+                                    </div>
+                                    <div class="fleft date">
+                                        {{ publication.datePublication|date("d M, Y", "Europe/Paris") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m0 taxonomy">
+                                <div class="fleft category">
+                                    <a href="category.html">
+                                        <img src="{{ asset('images/icons/cat.png') }}" alt="">
+                                        {{ publication.categorie.nomCategorie }}
+                                    </a>
+                                </div>
+                                <div class="fright views"><a href="#"><img src="{{ asset('images/icons/views.png') }}" alt="">3,45,346</a></div>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="navigation">
+                    {{ knp_pagination_render(publications) }}
+                </div>
+            </div>
+            <div class="col-sm-3 sidebar sidebar2">
+                <div class="row m0 sidebar_row_inner">
+                    <!--Search Form-->
+                    <form action="#" role="search" class="search_form row m0 widget widget_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search Here" >
+                            <span class="input-group-addon"><button type="submit"><img src="{{ asset('images/icons/search.png') }}" alt=""></button></span>
+                        </div>
+                    </form>
+                    <!--Sponsored Area-->
+                    <div class="row m0 widget widget_sponsored_area">
+                        <h5 class="widget_title">sponsored area</h5>
+                        <div class="row m0 inner">
+                            <div class="row m0 advertise_betweeen_uploads">
+                                <div class="inner row m0">
+                                    <h3>Advertise<br>Here</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Recommended to Follow-->
+                    <div class="row m0 widget widget_recommended_to_follow">
+                        <h5 class="widget_title">recommended to follow</h5>
+                        <div class="row m0 inner">
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/1.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follows</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/2.jpg')}}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/3.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/4.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--More Recommended to Follow-->
+                    <div class="row m0 widget widget_recommended_to_follow">
+                        <h5 class="widget_title">more authors to follow</h5>
+                        <div class="row m0 inner">
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/1.jpg')}}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/2.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/3.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/4.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/1.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/2.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/3.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/4.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/1.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/2.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/3.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/4.jpg') }}" alt="" class="circle"></a></div>
+                                <div class="media-body media-middle">
+                                    <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn follower_count">34,000</a>
+                                        <a href="#" class="btn follow">follow</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--Uploads-->
+
+<section class="row">
+    <ul class="nav nav-justified ribbon">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</section> <!--Ribbon-->
+{% endblock %}

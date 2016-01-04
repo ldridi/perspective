@@ -1,0 +1,246 @@
+{% extends 'layout/layout.html.twig' %}
+{% block body %}
+    <section class="row upload_media">
+        <div class="container">
+            <div class="row">
+                <h2>Upload Media Files &amp; Share Online</h2>
+                <h3>Share your PERSPECTIVE online easily</h3>
+
+                <form action="http://demo.uxart.io/file-upload" class="dropzone" id="upload_media">
+                    <div class="inner row m0">
+                        <div class="row m0 plus_ico">+</div>
+                        <input type="file" name="file" id="media_up_btn" class="sr-only">
+                        <label for="media_up_btn">Upload Media</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section> <!--Upload Form-->
+
+    <section class="row">
+        <ul class="nav nav-justified ribbon">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </section> <!--Ribbon-->
+
+    <section class="row search_filter search_filter_type2">
+        <div class="container">
+            <div class="row m0">
+                <!--Post Type Filter-->
+
+                <!--Category Filter-->
+                <div class="btn-group category_filter fright">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="filter-option pull-left">All Category</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><span class="filter_text">All Categories</span><span class="badge"></span></a></li>
+                        <li><a href="#"><span class="filter_text">Art</span><span class="badge">1200</span></a></li>
+                        <li><a href="#"><span class="filter_text">astrology</span><span class="badge">650</span></a></li>
+                        <li><a href="#"><span class="filter_text">biography</span><span class="badge">1200</span></a></li>
+                        <li><a href="#"><span class="filter_text">comedy</span><span class="badge">650</span></a></li>
+                        <li><a href="#"><span class="filter_text">entertainment</span><span class="badge">1200</span></a></li>
+                        <li><a href="#"><span class="filter_text">photoshop</span><span class="badge">650</span></a></li>
+                        <li><a href="#"><span class="filter_text">philosophy</span><span class="badge">1200</span></a></li>
+                        <li><a href="#"><span class="filter_text">nano tube</span><span class="badge">650</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section> <!--Search Filter-->
+
+    <section class="row post_page_sidebar post_page_sidebar1">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 post_page_uploads">
+                    <div class="row">
+                        {% for publication in publications %}
+                        <article class="col-sm-4 video_post postType2">
+                            <div class="inner row m0">
+                                <a href="{{ path('publication',{ 'titre' : publication.titlePublication }) }}"><div class="row screencast m0">
+                                        <img src="{{ asset('images/media/1.jpg') }}" alt="" class="cast img-responsive">
+
+                                    </div></a>
+                                <div class="row m0 post_data">
+                                    <div class="row m0">
+                                        <a href="{{ path('publication',{ 'titre' : publication.titlePublication }) }}" class="post_title">
+                                            {{ publication.titlePublication }}
+                                        </a>
+                                    </div>
+                                    <div class="row m0">
+                                        <div class="fleft author">
+                                            by
+                                            <a href="{{ path('profile',{ 'profile' : publication.user.username }) }}">
+                                                {{ publication.user.username}}
+                                            </a>
+                                        </div>
+                                        <div class="fleft date pull-right">
+                                            {{ publication.datePublication|date("d M, Y", "Europe/Paris") }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m0 taxonomy">
+                                    <div class="fleft category">
+                                        <a href="category.html">
+                                            <img src="{{ asset('images/icons/cat.png') }}" alt="">
+                                            {{ publication.categorie.nomCategorie }}
+                                        </a>
+                                    </div>
+                                    <div class="fright views"><a href="#"><img src="{{ asset('images/icons/views.png') }}" alt="">3,45,346</a></div>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                    <div class="navigation">
+                        {{ knp_pagination_render(publications) }}
+                    </div>
+                    <!--<div class="row pagination_row">
+                        <ul class="pagination">
+                            <li><a href="#">previous</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li class="disabled"><a href="#">...</a></li>
+                            <li><a href="#">next</a></li>
+                        </ul>
+                    </div>-->
+                </div>
+                <div class="col-sm-3 sidebar sidebar2">
+                    <div class="row m0 sidebar_row_inner">
+                        <!--Search Form-->
+                        <form action="#" role="search" class="search_form row m0 widget widget_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Here" >
+                                <span class="input-group-addon"><button type="submit"><img src="{{ asset('images/icons/search.png') }}" alt=""></button></span>
+                            </div>
+                        </form>
+                        <!--Sponsored Area
+                        <div class="row m0 widget widget_sponsored_area">
+                            <h5 class="widget_title">sponsored area</h5>
+                            <div class="row m0 inner">
+                                <div class="row m0 advertise_betweeen_uploads">
+                                    <div class="inner row m0">
+                                        <h3>Advertise<br>Here</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <!--Popular Videos-->
+                        <div class="row m0 widget widget_popular_videos">
+                            <h5 class="widget_title">popular videos</h5>
+                            <div class="row m0 inner">
+                                <div class="media">
+                                    <div class="media-left"><a href="single-video.html"><img src="{{ asset('images/popular/1.jpg') }}" alt=""><span class="duration">17:30</span></a></div>
+                                    <div class="media-body">
+                                        <a href="single-video.html">
+                                            <h5>Lorem ipsum dolor si amet etur adipis</h5>
+                                        </a>
+                                        <div class="row m0 meta_info views">34,000 views</div>
+                                        <div class="row m0 meta_info posted">1 year ago</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"><a href="single-video.html"><img src="{{ asset('images/popular/2.jpg') }}" alt=""><span class="duration">17:30</span></a></div>
+                                    <div class="media-body">
+                                        <a href="single-video.html">
+                                            <h5>Lorem ipsum dolor si amet etur adipis</h5>
+                                        </a>
+                                        <div class="row m0 meta_info views">34,000 views</div>
+                                        <div class="row m0 meta_info posted">1 year ago</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"><a href="single-video.html"><img src="{{ asset('images/popular/3.jpg')}}" alt=""><span class="duration">17:30</span></a></div>
+                                    <div class="media-body">
+                                        <a href="single-video.html">
+                                            <h5>Lorem ipsum dolor si amet etur adipis</h5>
+                                        </a>
+                                        <div class="row m0 meta_info views">34,000 views</div>
+                                        <div class="row m0 meta_info posted">1 year ago</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"><a href="single-video.html"><img src="{{ asset('images/popular/4.jpg') }}" alt=""><span class="duration">17:30</span></a></div>
+                                    <div class="media-body">
+                                        <a href="single-video.html">
+                                            <h5>Lorem ipsum dolor si amet etur adipis</h5>
+                                        </a>
+                                        <div class="row m0 meta_info views">34,000 views</div>
+                                        <div class="row m0 meta_info posted">1 year ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Recommended to Follow-->
+                        <div class="row m0 widget widget_recommended_to_follow">
+                            <h5 class="widget_title">recommended to follow</h5>
+                            <div class="row m0 inner">
+                                <div class="media">
+                                    <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/1.jpg') }}" alt="" class="circle"></a></div>
+                                    <div class="media-body media-middle">
+                                        <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn follower_count">34,000</a>
+                                            <a href="#" class="btn follow">follow</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/2.jpg')}}" alt="" class="circle"></a></div>
+                                    <div class="media-body media-middle">
+                                        <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn follower_count">34,000</a>
+                                            <a href="#" class="btn follow">follow</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/3.jpg') }}" alt="" class="circle"></a></div>
+                                    <div class="media-body media-middle">
+                                        <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn follower_count">34,000</a>
+                                            <a href="#" class="btn follow">follow</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left"><a href="page-author.html"><img src="{{ asset('images/follow/4.jpg') }}" alt="" class="circle"></a></div>
+                                    <div class="media-body media-middle">
+                                        <a href="page-author.html"><h5>Lisa Zing Lung</h5></a>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn follower_count">34,000</a>
+                                            <a href="#" class="btn follow">follow</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!--Uploads-->
+
+    <section class="row">
+        <ul class="nav nav-justified ribbon">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </section> <!--Ribbon-->
+
+{% endblock %}

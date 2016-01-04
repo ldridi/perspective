@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon/apple-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('favicon/apple-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon/apple-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('favicon/apple-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('favicon/apple-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('favicon/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('favicon/manifest.json') }}">
+        <meta name="msapplication-TileColor" content="#e74c3c">
+        <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}'">
+        <meta name="theme-color" content="#e74c3c">
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/bootstrap-select/css/bootstrap-select.min.css') }}" media="screen">
+
+        <!--Fonts-->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+        <!--Theme Styles-->
+        <link rel="stylesheet" href="{{ asset('css/default/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/responsive/responsive.css') }}">
+    </head>
+
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+
+
+        <!-- Preloader -->
+        <div id="preloader">
+            <div id="status">&nbsp;</div>
+        </div>
+
+        <!--jQuery, Bootstrap and other vendor JS-->
+
+        <!--jQuery-->
+        <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
+
+        <!--Bootstrap JS-->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <!--Dropzone-->
+        <script src="{{ asset('js/dropzone.js') }}"></script>
+
+        <!--jScroll-->
+        <script src="{{ asset('js/jquery.jscroll.min.js') }}"></script>
+
+        <!--Magnific Popup-->
+        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+
+        <!--Bootstrap Select-->
+        <script src="{{ asset('vendors/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+
+        <!--Theme JS-->
+        <script src="{{ asset('js/theme.js') }}"></script>
+
+</html>
