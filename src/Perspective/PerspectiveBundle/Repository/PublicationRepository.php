@@ -24,5 +24,19 @@ class PublicationRepository extends EntityRepository
         return $req->getQuery()->getResult();
     }
 
+    public function findById($id){
+        $req = $this->createQueryBuilder('p')
+
+
+
+
+            ->select('p')
+            ->where('p.id =:id')
+            ->orderBy('p.id')
+            ->setParameter('id', $id);
+        return $req->getQuery()->getResult();
+    }
+
+
 
 }

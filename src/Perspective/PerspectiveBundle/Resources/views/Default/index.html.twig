@@ -63,13 +63,13 @@
                         {% for publication in publications %}
                         <article class="col-sm-4 video_post postType2">
                             <div class="inner row m0">
-                                <a href="{{ path('publication',{ 'titre' : publication.titlePublication }) }}"><div class="row screencast m0">
+                                <a href="{{ path('publication',{ 'id' : publication.id }) }}"><div class="row screencast m0">
                                         <img src="{{ asset('images/media/1.jpg') }}" alt="" class="cast img-responsive">
 
                                     </div></a>
                                 <div class="row m0 post_data">
                                     <div class="row m0">
-                                        <a href="{{ path('publication',{ 'titre' : publication.titlePublication }) }}" class="post_title">
+                                        <a href="{{ path('publication',{ 'id' : publication.id }) }}" class="post_title">
                                             {{ publication.titlePublication }}
                                         </a>
                                     </div>

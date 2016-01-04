@@ -3,7 +3,7 @@ perspective_homepage:
     defaults: { _controller: PerspectiveBundle:Default:index }
 
 publication:
-    path:     /publication/{titre}
+    path:     /publication/{id}
     defaults: { _controller: PerspectiveBundle:Publication:index }
 
 fos_user_security:
