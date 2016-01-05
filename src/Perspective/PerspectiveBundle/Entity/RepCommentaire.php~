@@ -1,0 +1,106 @@
+<?php
+
+namespace Perspective\PerspectiveBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RepCommentaire
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Perspective\PerspectiveBundle\Repository\RepCommentaireRepository")
+ */
+class RepCommentaire
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\Utilisateur", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Perspective\PerspectiveBundle\Entity\Commentaire", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
+     */
+    private $commentaire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texte_repCommentaire", type="text")
+     */
+    private $texteRepCommentaire;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_repCommentaire", type="date")
+     */
+    private $dateRepCommentaire;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set texteRepCommentaire
+     *
+     * @param string $texteRepCommentaire
+     * @return RepCommentaire
+     */
+    public function setTexteRepCommentaire($texteRepCommentaire)
+    {
+        $this->texteRepCommentaire = $texteRepCommentaire;
+
+        return $this;
+    }
+
+    /**
+     * Get texteRepCommentaire
+     *
+     * @return string 
+     */
+    public function getTexteRepCommentaire()
+    {
+        return $this->texteRepCommentaire;
+    }
+
+    /**
+     * Set dateRepCommentaire
+     *
+     * @param \DateTime $dateRepCommentaire
+     * @return RepCommentaire
+     */
+    public function setDateRepCommentaire($dateRepCommentaire)
+    {
+        $this->dateRepCommentaire = $dateRepCommentaire;
+
+        return $this;
+    }
+
+    /**
+     * Get dateRepCommentaire
+     *
+     * @return \DateTime 
+     */
+    public function getDateRepCommentaire()
+    {
+        return $this->dateRepCommentaire;
+    }
+}

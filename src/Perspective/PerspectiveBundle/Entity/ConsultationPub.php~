@@ -23,7 +23,7 @@ class ConsultationPub
 
     /**
      * @ORM\ManyToOne(targetEntity="Perspective\PerspectiveBundle\Entity\Publication", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $publication;
 
